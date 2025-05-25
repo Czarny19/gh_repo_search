@@ -1,0 +1,83 @@
+{
+  "@_common": {},
+  "appName": "GitHub Repo Search",
+  "back": "Back",
+  "search": "Search",
+  "loading": "Loading...",
+  "loadingMore": "Loading more...",
+  "info": "Information",
+  "@_repoSearch": {},
+  "repoSearchHint": "Use the search bar above to find a public GitHub repository. The search query should consist of comma separated key words.",
+  "repoNoSearchResults": "No repositories found for the provided query. Try another query.",
+  "repoSearchError": "An error occured while searching for repositories. Please try again later or try another query.",
+  "repoDetailsError": "An error occured while loading this repository. Please try again later.",
+  "@_repoDetails": {},
+  "repoInfoTab": "Info",
+  "repoIssuesTab": "Issues",
+  "repoLang": "Language",
+  "repoOwner": "Owner",
+  "repoStars": "Stars",
+  "repoNStars": "{count, plural, =0{no stars} =1{1 star} other{{count} stars}}",
+  "@repoNStars": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "repoIssues": "Open issues",
+  "repoNIssues": "{count, plural, =0{no open issues} =1{1 open issue} other{{count} open issues}}",
+  "@repoNIssues": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "repoForks": "Forks",
+  "repoNForks": "{count, plural, =0{no forks} =1{1 fork} other{{count} forks}}",
+  "@repoNForks": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "repoWatchers": "Watchers",
+  "repoNWatchers": "{count, plural, =0{no watchers} =1{1 watcher} other{{count} watchers}}",
+  "@repoNWatchers": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "repoCreatedAt": "Created at",
+  "repoCreatedOn": "Created on {date}",
+  "@repoCreatedOn": {
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "yMMMd"
+      }
+    }
+  },
+  "repoUpdatedAt": "Updated at",
+  "repoUpdatedOn": "Updated on {date}",
+  "@repoUpdatedOn": {
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "yMMMd"
+      }
+    }
+  },
+  "repoOpenInBrowser": "Open repository in browser",
+  "repoIssuesLoading": "Loading issues...",
+  "repoIssueNumber": "Issue number",
+  "repoIssueOpenInBrowser": "Open issue in browser"
+}

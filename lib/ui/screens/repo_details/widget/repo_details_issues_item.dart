@@ -13,7 +13,7 @@ class _RepoDetailsIssuesItem extends StatelessWidget with Formatters {
       dense: true,
       isThreeLine: true,
       onTap: () => _showIssueBody(context, item),
-      leading: NetworkImg(url: item.userAvatarUrl, size: 32.0),
+      leading: NetworkImg(url: item.userAvatarUrl, size: 28.0),
       title: Padding(padding: const EdgeInsets.only(bottom: paddingXs), child: Text(item.title)),
       subtitle: Row(
         mainAxisAlignment: MainAxisAlignment.start,

@@ -33,10 +33,13 @@ class RepoDetailsCubit extends Cubit<RepoDetailsState> {
 
     _loadIssues(fullName);
   }
-  
+
   Future<void> _loadIssues(String fullName) async {
     final issues = await _loadGitRepoIssuesUseCase.invoke(fullName: fullName);
-    emit(state.copyWith(loadingIssues: false, issues: issues));
+
+    if (!isClosed) {
+      emit(state.copyWith(loadingIssues: false, issues: issues));
+    }
   }
 
   void switchTab(int tab) {

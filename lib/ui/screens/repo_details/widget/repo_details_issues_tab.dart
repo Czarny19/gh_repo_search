@@ -17,7 +17,7 @@ class _RepoDetailsIssuesTab extends StatelessWidget {
           builder: (context, state) {
             return ListView.separated(
               itemBuilder: (context, index) => _RepoDetailsIssuesItem(item: state.issues[index]),
-              separatorBuilder: (context, index) => const Divider(height: paddingXs),
+              separatorBuilder: (context, index) => const Divider(height: 0),
               itemCount: state.issues.length,
             );
           },

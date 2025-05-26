@@ -1,7 +1,9 @@
 part of '../repo_details_screen.dart';
 
 class _RepoDetailsNavBar extends StatelessWidget {
-  const _RepoDetailsNavBar();
+  const _RepoDetailsNavBar({required this.pageViewController});
+
+  final PageController pageViewController;
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +11,7 @@ class _RepoDetailsNavBar extends StatelessWidget {
       buildWhen: (prev, curr) => prev.tab != curr.tab,
       builder: (context, state) {
         return NavigationBar(
-          onDestinationSelected: (int index) => context.read<RepoDetailsCubit>().switchTab(index),
+          onDestinationSelected: (int index) => pageViewController.jumpToPage(index),
           selectedIndex: state.tab,
           destinations: [
             NavigationDestination(

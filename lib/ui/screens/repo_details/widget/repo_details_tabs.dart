@@ -1,36 +1,17 @@
 part of '../repo_details_screen.dart';
 
-class _RepoDetailsTabs extends StatefulWidget {
-  const _RepoDetailsTabs();
+class _RepoDetailsTabs extends StatelessWidget {
+  const _RepoDetailsTabs({required this.pageViewController});
 
-  @override
-  State<_RepoDetailsTabs> createState() => _RepoDetailsTabsState();
-}
-
-class _RepoDetailsTabsState extends State<_RepoDetailsTabs> {
-  late PageController _pageViewController;
-
-  @override
-  void initState() {
-    super.initState();
-    _pageViewController = PageController(initialPage: 0);
-  }
-
-  @override
-  void dispose() {
-    _pageViewController.dispose();
-    super.dispose();
-  }
+  final PageController pageViewController;
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RepoDetailsCubit, RepoDetailsState>(
-      listenWhen: (prev, curr) => prev.tab != curr.tab,
-      listener: (context, state) => _pageViewController.jumpToPage(state.tab),
+    return BlocBuilder<RepoDetailsCubit, RepoDetailsState>(
       buildWhen: (prev, curr) => prev.tab != curr.tab,
       builder: (context, state) {
         return PageView(
-          controller: _pageViewController,
+          controller: pageViewController,
           children: const [_RepoDetailsInfoTab(), _RepoDetailsIssuesTab()],
           onPageChanged: (int index) => context.read<RepoDetailsCubit>().switchTab(index),
         );

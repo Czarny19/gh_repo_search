@@ -26,24 +26,51 @@ part 'widget/repo_details_nav_bar.dart';
 
 part 'widget/repo_details_tabs.dart';
 
-class RepoDetailsScreen extends StatelessWidget {
+class RepoDetailsScreen extends StatefulWidget {
   const RepoDetailsScreen({super.key, required this.fullName});
 
   final String fullName;
 
   @override
+  State<RepoDetailsScreen> createState() => _RepoDetailsScreenState();
+}
+
+class _RepoDetailsScreenState extends State<RepoDetailsScreen> {
+  late PageController _pageViewController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageViewController = PageController(initialPage: 0);
+  }
+
+  @override
+  void dispose() {
+    _pageViewController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider<RepoDetailsCubit>(
-      create: (context) => RepoDetailsCubit(fullName: fullName, RepositoryProvider.of<GitRepoRepository>(context)),
+      create:
+          (context) => RepoDetailsCubit(fullName: widget.fullName, RepositoryProvider.of<GitRepoRepository>(context)),
       child: BlocBuilder<RepoDetailsCubit, RepoDetailsState>(
         buildWhen: (prev, curr) => prev.status != curr.status,
         builder: (context, state) {
           return Scaffold(
-            appBar: PrimaryAppBar(label: fullName, backIconButtonVisible: true, backIconButtonAction: context.pop),
-            bottomNavigationBar: state.status == RepoDetailsStatus.view ? const _RepoDetailsNavBar() : null,
+            appBar: PrimaryAppBar(
+              label: widget.fullName,
+              backIconButtonVisible: true,
+              backIconButtonAction: context.pop,
+            ),
+            bottomNavigationBar:
+                state.status == RepoDetailsStatus.view
+                    ? _RepoDetailsNavBar(pageViewController: _pageViewController)
+                    : null,
             body: switch (state.status) {
               RepoDetailsStatus.loading => const AppLoading(),
-              RepoDetailsStatus.view => const _RepoDetailsTabs(),
+              RepoDetailsStatus.view => _RepoDetailsTabs(pageViewController: _pageViewController),
               RepoDetailsStatus.error => Padding(
                 padding: const EdgeInsets.all(paddingMd),
                 child: InfoCard(msg: context.tr.repoDetailsError, isError: true),

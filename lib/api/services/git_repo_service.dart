@@ -1,5 +1,3 @@
-import 'dart:isolate';
-
 import 'package:dio/dio.dart' show Dio, DioException;
 import 'package:gh_repo_search/api/constants/api.dart' as api;
 import 'package:gh_repo_search/domain/models/git_repo_issue_model.dart';
@@ -13,9 +11,7 @@ class GitRepoService {
 
   Future<ListInfo<GitRepoSMModel>> getListWithInfo(String query, int page) async {
     try {
-      final response = await Isolate.run(
-        () => _dio.get('search/repositories', queryParameters: _buildListQueryParams(query, page)),
-      );
+      final response = await _dio.get(api.epRepoSearch, queryParameters: _buildListQueryParams(query, page));
 
       final json = response.data as Map<String, dynamic>;
       final items = json['items'].map((item) => GitRepoSMModel.fromJson(item)).whereType<GitRepoSMModel>().toList();
@@ -29,9 +25,7 @@ class GitRepoService {
 
   Future<List<GitRepoSMModel>> getList(String query, int page) async {
     try {
-      final response = await Isolate.run(
-        () => _dio.get('search/repositories', queryParameters: _buildListQueryParams(query, page)),
-      );
+      final response = await _dio.get(api.epRepoSearch, queryParameters: _buildListQueryParams(query, page));
 
       final json = response.data as Map<String, dynamic>;
       return json['items'].map((item) => GitRepoSMModel.fromJson(item)).whereType<GitRepoSMModel>().toList();
@@ -42,7 +36,7 @@ class GitRepoService {
 
   Future<GitRepoModel?> getRepo(String repoFullName) async {
     try {
-      final response = await Isolate.run(() => _dio.get('repos/$repoFullName'));
+      final response = await _dio.get('${api.epRepoGet}$repoFullName');
 
       final json = response.data as Map<String, dynamic>;
       return GitRepoModel.fromJson(json);
@@ -53,7 +47,7 @@ class GitRepoService {
 
   Future<List<GitRepoIssueModel>> getRepoIssues(String repoFullName) async {
     try {
-      final response = await Isolate.run(() => _dio.get('repos/$repoFullName/issues'));
+      final response = await _dio.get('${api.epRepoGet}$repoFullName${api.epRepoGetIssues}');
 
       final json = response.data as List<dynamic>;
       return json.map((item) => GitRepoIssueModel.fromJson(item)).whereType<GitRepoIssueModel>().toList();

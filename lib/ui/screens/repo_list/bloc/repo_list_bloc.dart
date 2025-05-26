@@ -3,8 +3,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gh_repo_search/api/repositories/git_repo_repository.dart';
 import 'package:gh_repo_search/domain/models/git_repo_model.dart';
 import 'package:gh_repo_search/domain/models/list_info.dart';
-import 'package:gh_repo_search/domain/usecases/load_git_repo_list_use_case.dart';
-import 'package:gh_repo_search/domain/usecases/load_git_repo_page_use_case.dart';
+import 'package:gh_repo_search/domain/usecases/repo/load_git_repo_list_use_case.dart';
+import 'package:gh_repo_search/domain/usecases/repo/load_git_repo_page_use_case.dart';
 import 'package:gh_repo_search/mixins/transformers.dart';
 
 part 'repo_list_bloc.freezed.dart';

@@ -133,7 +133,7 @@ abstract class AppLocalizations {
   /// No description provided for @repoSearchHint.
   ///
   /// In en, this message translates to:
-  /// **'Use the search bar above to find a GitHub repository. The search query should consist of key words separated with a comma.'**
+  /// **'Use the search bar above to find a public GitHub repository. The search query should consist of comma separated key words.'**
   String get repoSearchHint;
 
   /// No description provided for @repoNoSearchResults.

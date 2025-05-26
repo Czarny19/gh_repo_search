@@ -25,7 +25,7 @@ class RepoDetailsCubit extends Cubit<RepoDetailsState> {
     final repo = await _loadGitRepoUseCase.invoke(fullName: fullName);
 
     if (repo == null) {
-      emit(state.copyWith(status: RepoDetailsStatus.error));
+      emit(state.copyWith(status: RepoDetailsStatus.error, loadingIssues: false));
       return;
     }
 

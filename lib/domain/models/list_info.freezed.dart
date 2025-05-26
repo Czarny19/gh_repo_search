@@ -13,40 +13,40 @@ part of 'list_info.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$ListInfo<T> {
+mixin _$ListInfo {
 
- String get query; int get currPage; int get totalPages; List<T> get items; bool get isError; bool get isLoadingNextPage;
+ String get query; dynamic get currPage; dynamic get totalPages; bool get isError; bool get isLoadingNextPage;
 /// Create a copy of ListInfo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ListInfoCopyWith<T, ListInfo<T>> get copyWith => _$ListInfoCopyWithImpl<T, ListInfo<T>>(this as ListInfo<T>, _$identity);
+$ListInfoCopyWith<ListInfo> get copyWith => _$ListInfoCopyWithImpl<ListInfo>(this as ListInfo, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ListInfo<T>&&(identical(other.query, query) || other.query == query)&&(identical(other.currPage, currPage) || other.currPage == currPage)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages)&&const DeepCollectionEquality().equals(other.items, items)&&(identical(other.isError, isError) || other.isError == isError)&&(identical(other.isLoadingNextPage, isLoadingNextPage) || other.isLoadingNextPage == isLoadingNextPage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ListInfo&&(identical(other.query, query) || other.query == query)&&const DeepCollectionEquality().equals(other.currPage, currPage)&&const DeepCollectionEquality().equals(other.totalPages, totalPages)&&(identical(other.isError, isError) || other.isError == isError)&&(identical(other.isLoadingNextPage, isLoadingNextPage) || other.isLoadingNextPage == isLoadingNextPage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,query,currPage,totalPages,const DeepCollectionEquality().hash(items),isError,isLoadingNextPage);
+int get hashCode => Object.hash(runtimeType,query,const DeepCollectionEquality().hash(currPage),const DeepCollectionEquality().hash(totalPages),isError,isLoadingNextPage);
 
 @override
 String toString() {
-  return 'ListInfo<$T>(query: $query, currPage: $currPage, totalPages: $totalPages, items: $items, isError: $isError, isLoadingNextPage: $isLoadingNextPage)';
+  return 'ListInfo(query: $query, currPage: $currPage, totalPages: $totalPages, isError: $isError, isLoadingNextPage: $isLoadingNextPage)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ListInfoCopyWith<T,$Res>  {
-  factory $ListInfoCopyWith(ListInfo<T> value, $Res Function(ListInfo<T>) _then) = _$ListInfoCopyWithImpl;
+abstract mixin class $ListInfoCopyWith<$Res>  {
+  factory $ListInfoCopyWith(ListInfo value, $Res Function(ListInfo) _then) = _$ListInfoCopyWithImpl;
 @useResult
 $Res call({
- String query, int currPage, int totalPages, List<T> items, bool isError, bool isLoadingNextPage
+ String query, dynamic currPage, dynamic totalPages, bool isError, bool isLoadingNextPage
 });
 
 
@@ -54,22 +54,21 @@ $Res call({
 
 }
 /// @nodoc
-class _$ListInfoCopyWithImpl<T,$Res>
-    implements $ListInfoCopyWith<T, $Res> {
+class _$ListInfoCopyWithImpl<$Res>
+    implements $ListInfoCopyWith<$Res> {
   _$ListInfoCopyWithImpl(this._self, this._then);
 
-  final ListInfo<T> _self;
-  final $Res Function(ListInfo<T>) _then;
+  final ListInfo _self;
+  final $Res Function(ListInfo) _then;
 
 /// Create a copy of ListInfo
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? query = null,Object? currPage = null,Object? totalPages = null,Object? items = null,Object? isError = null,Object? isLoadingNextPage = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? query = null,Object? currPage = freezed,Object? totalPages = freezed,Object? isError = null,Object? isLoadingNextPage = null,}) {
   return _then(_self.copyWith(
 query: null == query ? _self.query : query // ignore: cast_nullable_to_non_nullable
-as String,currPage: null == currPage ? _self.currPage : currPage // ignore: cast_nullable_to_non_nullable
-as int,totalPages: null == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
-as int,items: null == items ? _self.items : items // ignore: cast_nullable_to_non_nullable
-as List<T>,isError: null == isError ? _self.isError : isError // ignore: cast_nullable_to_non_nullable
+as String,currPage: freezed == currPage ? _self.currPage : currPage // ignore: cast_nullable_to_non_nullable
+as dynamic,totalPages: freezed == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
+as dynamic,isError: null == isError ? _self.isError : isError // ignore: cast_nullable_to_non_nullable
 as bool,isLoadingNextPage: null == isLoadingNextPage ? _self.isLoadingNextPage : isLoadingNextPage // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
@@ -81,20 +80,13 @@ as bool,
 /// @nodoc
 
 
-class _ListInfo<T> extends ListInfo<T> {
-  const _ListInfo({required this.query, required this.currPage, required this.totalPages, required final  List<T> items, this.isError = false, this.isLoadingNextPage = false}): _items = items,super._();
+class _ListInfo implements ListInfo {
+  const _ListInfo({this.query = '', this.currPage = 1, this.totalPages = 1, this.isError = false, this.isLoadingNextPage = false});
   
 
-@override final  String query;
-@override final  int currPage;
-@override final  int totalPages;
- final  List<T> _items;
-@override List<T> get items {
-  if (_items is EqualUnmodifiableListView) return _items;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_items);
-}
-
+@override@JsonKey() final  String query;
+@override@JsonKey() final  dynamic currPage;
+@override@JsonKey() final  dynamic totalPages;
 @override@JsonKey() final  bool isError;
 @override@JsonKey() final  bool isLoadingNextPage;
 
@@ -102,33 +94,33 @@ class _ListInfo<T> extends ListInfo<T> {
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ListInfoCopyWith<T, _ListInfo<T>> get copyWith => __$ListInfoCopyWithImpl<T, _ListInfo<T>>(this, _$identity);
+_$ListInfoCopyWith<_ListInfo> get copyWith => __$ListInfoCopyWithImpl<_ListInfo>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ListInfo<T>&&(identical(other.query, query) || other.query == query)&&(identical(other.currPage, currPage) || other.currPage == currPage)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages)&&const DeepCollectionEquality().equals(other._items, _items)&&(identical(other.isError, isError) || other.isError == isError)&&(identical(other.isLoadingNextPage, isLoadingNextPage) || other.isLoadingNextPage == isLoadingNextPage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ListInfo&&(identical(other.query, query) || other.query == query)&&const DeepCollectionEquality().equals(other.currPage, currPage)&&const DeepCollectionEquality().equals(other.totalPages, totalPages)&&(identical(other.isError, isError) || other.isError == isError)&&(identical(other.isLoadingNextPage, isLoadingNextPage) || other.isLoadingNextPage == isLoadingNextPage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,query,currPage,totalPages,const DeepCollectionEquality().hash(_items),isError,isLoadingNextPage);
+int get hashCode => Object.hash(runtimeType,query,const DeepCollectionEquality().hash(currPage),const DeepCollectionEquality().hash(totalPages),isError,isLoadingNextPage);
 
 @override
 String toString() {
-  return 'ListInfo<$T>(query: $query, currPage: $currPage, totalPages: $totalPages, items: $items, isError: $isError, isLoadingNextPage: $isLoadingNextPage)';
+  return 'ListInfo(query: $query, currPage: $currPage, totalPages: $totalPages, isError: $isError, isLoadingNextPage: $isLoadingNextPage)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ListInfoCopyWith<T,$Res> implements $ListInfoCopyWith<T, $Res> {
-  factory _$ListInfoCopyWith(_ListInfo<T> value, $Res Function(_ListInfo<T>) _then) = __$ListInfoCopyWithImpl;
+abstract mixin class _$ListInfoCopyWith<$Res> implements $ListInfoCopyWith<$Res> {
+  factory _$ListInfoCopyWith(_ListInfo value, $Res Function(_ListInfo) _then) = __$ListInfoCopyWithImpl;
 @override @useResult
 $Res call({
- String query, int currPage, int totalPages, List<T> items, bool isError, bool isLoadingNextPage
+ String query, dynamic currPage, dynamic totalPages, bool isError, bool isLoadingNextPage
 });
 
 
@@ -136,22 +128,21 @@ $Res call({
 
 }
 /// @nodoc
-class __$ListInfoCopyWithImpl<T,$Res>
-    implements _$ListInfoCopyWith<T, $Res> {
+class __$ListInfoCopyWithImpl<$Res>
+    implements _$ListInfoCopyWith<$Res> {
   __$ListInfoCopyWithImpl(this._self, this._then);
 
-  final _ListInfo<T> _self;
-  final $Res Function(_ListInfo<T>) _then;
+  final _ListInfo _self;
+  final $Res Function(_ListInfo) _then;
 
 /// Create a copy of ListInfo
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? query = null,Object? currPage = null,Object? totalPages = null,Object? items = null,Object? isError = null,Object? isLoadingNextPage = null,}) {
-  return _then(_ListInfo<T>(
+@override @pragma('vm:prefer-inline') $Res call({Object? query = null,Object? currPage = freezed,Object? totalPages = freezed,Object? isError = null,Object? isLoadingNextPage = null,}) {
+  return _then(_ListInfo(
 query: null == query ? _self.query : query // ignore: cast_nullable_to_non_nullable
-as String,currPage: null == currPage ? _self.currPage : currPage // ignore: cast_nullable_to_non_nullable
-as int,totalPages: null == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
-as int,items: null == items ? _self._items : items // ignore: cast_nullable_to_non_nullable
-as List<T>,isError: null == isError ? _self.isError : isError // ignore: cast_nullable_to_non_nullable
+as String,currPage: freezed == currPage ? _self.currPage : currPage // ignore: cast_nullable_to_non_nullable
+as dynamic,totalPages: freezed == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
+as dynamic,isError: null == isError ? _self.isError : isError // ignore: cast_nullable_to_non_nullable
 as bool,isLoadingNextPage: null == isLoadingNextPage ? _self.isLoadingNextPage : isLoadingNextPage // ignore: cast_nullable_to_non_nullable
 as bool,
   ));

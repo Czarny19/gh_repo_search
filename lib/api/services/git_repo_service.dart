@@ -9,7 +9,7 @@ class GitRepoService {
 
   final Dio _dio;
 
-  Future<ListInfo<GitRepoSMModel>> getListWithInfo(String query, int page) async {
+  Future<(ListInfo, List<GitRepoSMModel>)> getListWithInfo(String query, int page) async {
     try {
       final response = await _dio.get(api.epRepoSearch, queryParameters: _buildListQueryParams(query, page));
 
@@ -17,9 +17,9 @@ class GitRepoService {
       final items = json['items'].map((item) => GitRepoSMModel.fromJson(item)).whereType<GitRepoSMModel>().toList();
       final totalPages = (double.parse(json['total_count'].toString()) / api.listPageSize).ceil();
 
-      return ListInfo(currPage: page, totalPages: totalPages, items: items, query: query, isError: false);
+      return (ListInfo(currPage: page, totalPages: totalPages, query: query), items as List<GitRepoSMModel>);
     } on DioException catch (_) {
-      return ListInfo(currPage: page, totalPages: 0, items: [], query: query, isError: true);
+      return (ListInfo(currPage: page, totalPages: 0, query: query, isError: true), <GitRepoSMModel>[]);
     }
   }
 

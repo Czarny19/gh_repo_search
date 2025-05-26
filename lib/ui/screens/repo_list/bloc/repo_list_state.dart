@@ -6,6 +6,7 @@ enum RepoListStatus { start, loading, list, empty }
 abstract class RepoListState with _$RepoListState {
   const factory RepoListState({
     @Default(RepoListStatus.start) RepoListStatus status,
-    @Default(ListInfo(query: '', currPage: 1, totalPages: 1, items: [])) ListInfo<GitRepoSMModel> listInfo,
+    @Default([]) List<GitRepoSMModel> items,
+    @Default(ListInfo()) ListInfo listInfo,
   }) = _RepoListState;
 }

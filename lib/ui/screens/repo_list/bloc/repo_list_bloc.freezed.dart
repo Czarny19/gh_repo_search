@@ -207,7 +207,7 @@ String toString() {
 /// @nodoc
 mixin _$RepoListState {
 
- RepoListStatus get status; ListInfo<GitRepoSMModel> get listInfo;
+ RepoListStatus get status; List<GitRepoSMModel> get items; ListInfo get listInfo;
 /// Create a copy of RepoListState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -218,16 +218,16 @@ $RepoListStateCopyWith<RepoListState> get copyWith => _$RepoListStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RepoListState&&(identical(other.status, status) || other.status == status)&&(identical(other.listInfo, listInfo) || other.listInfo == listInfo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RepoListState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.items, items)&&(identical(other.listInfo, listInfo) || other.listInfo == listInfo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,listInfo);
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(items),listInfo);
 
 @override
 String toString() {
-  return 'RepoListState(status: $status, listInfo: $listInfo)';
+  return 'RepoListState(status: $status, items: $items, listInfo: $listInfo)';
 }
 
 
@@ -238,11 +238,11 @@ abstract mixin class $RepoListStateCopyWith<$Res>  {
   factory $RepoListStateCopyWith(RepoListState value, $Res Function(RepoListState) _then) = _$RepoListStateCopyWithImpl;
 @useResult
 $Res call({
- RepoListStatus status, ListInfo<GitRepoSMModel> listInfo
+ RepoListStatus status, List<GitRepoSMModel> items, ListInfo listInfo
 });
 
 
-$ListInfoCopyWith<GitRepoSMModel, $Res> get listInfo;
+$ListInfoCopyWith<$Res> get listInfo;
 
 }
 /// @nodoc
@@ -255,20 +255,21 @@ class _$RepoListStateCopyWithImpl<$Res>
 
 /// Create a copy of RepoListState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? listInfo = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? items = null,Object? listInfo = null,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as RepoListStatus,listInfo: null == listInfo ? _self.listInfo : listInfo // ignore: cast_nullable_to_non_nullable
-as ListInfo<GitRepoSMModel>,
+as RepoListStatus,items: null == items ? _self.items : items // ignore: cast_nullable_to_non_nullable
+as List<GitRepoSMModel>,listInfo: null == listInfo ? _self.listInfo : listInfo // ignore: cast_nullable_to_non_nullable
+as ListInfo,
   ));
 }
 /// Create a copy of RepoListState
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ListInfoCopyWith<GitRepoSMModel, $Res> get listInfo {
+$ListInfoCopyWith<$Res> get listInfo {
   
-  return $ListInfoCopyWith<GitRepoSMModel, $Res>(_self.listInfo, (value) {
+  return $ListInfoCopyWith<$Res>(_self.listInfo, (value) {
     return _then(_self.copyWith(listInfo: value));
   });
 }
@@ -279,11 +280,18 @@ $ListInfoCopyWith<GitRepoSMModel, $Res> get listInfo {
 
 
 class _RepoListState implements RepoListState {
-  const _RepoListState({this.status = RepoListStatus.start, this.listInfo = const ListInfo(query: '', currPage: 1, totalPages: 1, items: [])});
+  const _RepoListState({this.status = RepoListStatus.start, final  List<GitRepoSMModel> items = const [], this.listInfo = const ListInfo()}): _items = items;
   
 
 @override@JsonKey() final  RepoListStatus status;
-@override@JsonKey() final  ListInfo<GitRepoSMModel> listInfo;
+ final  List<GitRepoSMModel> _items;
+@override@JsonKey() List<GitRepoSMModel> get items {
+  if (_items is EqualUnmodifiableListView) return _items;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_items);
+}
+
+@override@JsonKey() final  ListInfo listInfo;
 
 /// Create a copy of RepoListState
 /// with the given fields replaced by the non-null parameter values.
@@ -295,16 +303,16 @@ _$RepoListStateCopyWith<_RepoListState> get copyWith => __$RepoListStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RepoListState&&(identical(other.status, status) || other.status == status)&&(identical(other.listInfo, listInfo) || other.listInfo == listInfo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RepoListState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._items, _items)&&(identical(other.listInfo, listInfo) || other.listInfo == listInfo));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,listInfo);
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_items),listInfo);
 
 @override
 String toString() {
-  return 'RepoListState(status: $status, listInfo: $listInfo)';
+  return 'RepoListState(status: $status, items: $items, listInfo: $listInfo)';
 }
 
 
@@ -315,11 +323,11 @@ abstract mixin class _$RepoListStateCopyWith<$Res> implements $RepoListStateCopy
   factory _$RepoListStateCopyWith(_RepoListState value, $Res Function(_RepoListState) _then) = __$RepoListStateCopyWithImpl;
 @override @useResult
 $Res call({
- RepoListStatus status, ListInfo<GitRepoSMModel> listInfo
+ RepoListStatus status, List<GitRepoSMModel> items, ListInfo listInfo
 });
 
 
-@override $ListInfoCopyWith<GitRepoSMModel, $Res> get listInfo;
+@override $ListInfoCopyWith<$Res> get listInfo;
 
 }
 /// @nodoc
@@ -332,11 +340,12 @@ class __$RepoListStateCopyWithImpl<$Res>
 
 /// Create a copy of RepoListState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? listInfo = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? items = null,Object? listInfo = null,}) {
   return _then(_RepoListState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as RepoListStatus,listInfo: null == listInfo ? _self.listInfo : listInfo // ignore: cast_nullable_to_non_nullable
-as ListInfo<GitRepoSMModel>,
+as RepoListStatus,items: null == items ? _self._items : items // ignore: cast_nullable_to_non_nullable
+as List<GitRepoSMModel>,listInfo: null == listInfo ? _self.listInfo : listInfo // ignore: cast_nullable_to_non_nullable
+as ListInfo,
   ));
 }
 
@@ -344,9 +353,9 @@ as ListInfo<GitRepoSMModel>,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ListInfoCopyWith<GitRepoSMModel, $Res> get listInfo {
+$ListInfoCopyWith<$Res> get listInfo {
   
-  return $ListInfoCopyWith<GitRepoSMModel, $Res>(_self.listInfo, (value) {
+  return $ListInfoCopyWith<$Res>(_self.listInfo, (value) {
     return _then(_self.copyWith(listInfo: value));
   });
 }

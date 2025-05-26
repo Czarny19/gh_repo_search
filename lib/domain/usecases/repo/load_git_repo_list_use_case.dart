@@ -9,7 +9,7 @@ class LoadGitRepoListUseCase {
 
   final GitRepoRepository _gitRepoRepository;
 
-  Future<ListInfo<GitRepoSMModel>> invoke({required String query, required int page}) async {
+  Future<(ListInfo, List<GitRepoSMModel>)> invoke({required String query, required int page}) async {
     return await Isolate.run(() => _gitRepoRepository.getList(query: query, page: page));
   }
 }

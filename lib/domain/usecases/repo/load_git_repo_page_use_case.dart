@@ -9,15 +9,19 @@ class LoadGitRepoPageUseCase {
 
   final GitRepoRepository _gitRepoRepository;
 
-  Future<ListInfo<GitRepoSMModel>> invoke({required ListInfo<GitRepoSMModel> listInfo, required int page}) async {
+  Future<(ListInfo, List<GitRepoSMModel>)> invoke({
+    required ListInfo listInfo,
+    required List<GitRepoSMModel> items,
+    required int page,
+  }) async {
     return await Isolate.run(() async {
       final newItems = await _gitRepoRepository.getListPage(query: listInfo.query, page: page);
 
       if (newItems.isEmpty) {
-        return listInfo.copyWith(isError: true);
+        return (listInfo.copyWith(isError: true, isLoadingNextPage: false), <GitRepoSMModel>[]);
       }
 
-      return listInfo.copyWith(items: [...listInfo.items, ...newItems], currPage: page, isError: false);
+      return (listInfo.copyWith(currPage: page, isError: false, isLoadingNextPage: false), [...items, ...newItems]);
     });
   }
 }

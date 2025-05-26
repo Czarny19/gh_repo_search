@@ -3,17 +3,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'list_info.freezed.dart';
 
 @freezed
-abstract class ListInfo<T> with _$ListInfo<T> {
-  const ListInfo._();
-
+abstract class ListInfo with _$ListInfo {
   const factory ListInfo({
-    required String query,
-    required int currPage,
-    required int totalPages,
-    required List<T> items,
+    @Default('') String query,
+    @Default(1) currPage,
+    @Default(1) totalPages,
     @Default(false) bool isError,
     @Default(false) bool isLoadingNextPage,
   }) = _ListInfo;
-
-  factory ListInfo.empty() => ListInfo(query: '', currPage: 1, totalPages: 1, items: []);
 }

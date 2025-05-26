@@ -35,18 +35,18 @@ class RepoListBloc extends Bloc<RepoListEvent, RepoListState> with Transformers 
       return;
     }
 
-    final listInfo = await _loadGitRepoListUseCase.invoke(query: event.query, page: 1);
+    final (listInfo, items) = await _loadGitRepoListUseCase.invoke(query: event.query, page: 1);
 
-    if (listInfo.items.isEmpty) {
-      emit(state.copyWith(status: RepoListStatus.empty));
+    if (items.isEmpty) {
+      emit(state.copyWith(status: RepoListStatus.empty, items: []));
       return;
     }
 
-    emit(state.copyWith(status: RepoListStatus.list, listInfo: listInfo));
+    emit(state.copyWith(status: RepoListStatus.list, listInfo: listInfo, items: items));
   }
 
   Future<void> _clear(_RepoListClear event, Emitter<RepoListState> emit) async {
-    emit(state.copyWith(status: RepoListStatus.start, listInfo: ListInfo.empty()));
+    emit(state.copyWith(status: RepoListStatus.start, listInfo: ListInfo(), items: []));
   }
 
   Future<void> _refresh(_RepoListRefresh event, Emitter<RepoListState> emit) async {
@@ -56,19 +56,25 @@ class RepoListBloc extends Bloc<RepoListEvent, RepoListState> with Transformers 
 
     emit(state.copyWith(status: RepoListStatus.loading));
 
-    final listInfo = await _loadGitRepoListUseCase.invoke(query: state.listInfo.query, page: 1);
+    final (listInfo, items) = await _loadGitRepoListUseCase.invoke(query: state.listInfo.query, page: 1);
 
-    if (listInfo.items.isEmpty) {
-      emit(state.copyWith(status: RepoListStatus.empty));
+    if (items.isEmpty) {
+      emit(state.copyWith(status: RepoListStatus.empty, items: []));
       return;
     }
 
-    emit(state.copyWith(status: RepoListStatus.list, listInfo: listInfo));
+    emit(state.copyWith(status: RepoListStatus.list, listInfo: listInfo, items: items));
   }
 
   Future<void> _loadNextPage(_RepoListNextPage event, Emitter<RepoListState> emit) async {
     emit(state.copyWith(listInfo: state.listInfo.copyWith(isLoadingNextPage: true)));
-    final listInfo = await _loadGitRepoPageUseCase.invoke(listInfo: state.listInfo, page: state.listInfo.currPage + 1);
-    emit(state.copyWith(status: RepoListStatus.list, listInfo: listInfo.copyWith(isLoadingNextPage: false)));
+
+    final (listInfo, items) = await _loadGitRepoPageUseCase.invoke(
+      listInfo: state.listInfo,
+      items: state.items,
+      page: state.listInfo.currPage + 1,
+    );
+
+    emit(state.copyWith(status: RepoListStatus.list, listInfo: listInfo, items: items));
   }
 }

@@ -15,7 +15,7 @@ class _RepoListContents extends StatelessWidget {
           );
         }
 
-        final items = state.listInfo.items;
+        final items = state.items;
         final isLastPage = state.listInfo.currPage == state.listInfo.totalPages;
 
         return SliverMainAxisGroup(

@@ -11,7 +11,7 @@ class GitRepoRepository {
 
   late final GitRepoService _gitRepoService;
 
-  Future<ListInfo<GitRepoSMModel>> getList({required String query, required int page}) async =>
+  Future<(ListInfo, List<GitRepoSMModel>)> getList({required String query, required int page}) async =>
       _gitRepoService.getListWithInfo(query, page);
 
   Future<List<GitRepoSMModel>> getListPage({required String query, required int page}) async =>

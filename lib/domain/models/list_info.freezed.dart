@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ListInfo {
 
- String get query; dynamic get currPage; dynamic get totalPages; bool get isError; bool get isLoadingNextPage;
+ String get query; int get currPage; int get totalPages; bool get isError; bool get isLoadingNextPage;
 /// Create a copy of ListInfo
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,12 +26,12 @@ $ListInfoCopyWith<ListInfo> get copyWith => _$ListInfoCopyWithImpl<ListInfo>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ListInfo&&(identical(other.query, query) || other.query == query)&&const DeepCollectionEquality().equals(other.currPage, currPage)&&const DeepCollectionEquality().equals(other.totalPages, totalPages)&&(identical(other.isError, isError) || other.isError == isError)&&(identical(other.isLoadingNextPage, isLoadingNextPage) || other.isLoadingNextPage == isLoadingNextPage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ListInfo&&(identical(other.query, query) || other.query == query)&&(identical(other.currPage, currPage) || other.currPage == currPage)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages)&&(identical(other.isError, isError) || other.isError == isError)&&(identical(other.isLoadingNextPage, isLoadingNextPage) || other.isLoadingNextPage == isLoadingNextPage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,query,const DeepCollectionEquality().hash(currPage),const DeepCollectionEquality().hash(totalPages),isError,isLoadingNextPage);
+int get hashCode => Object.hash(runtimeType,query,currPage,totalPages,isError,isLoadingNextPage);
 
 @override
 String toString() {
@@ -46,7 +46,7 @@ abstract mixin class $ListInfoCopyWith<$Res>  {
   factory $ListInfoCopyWith(ListInfo value, $Res Function(ListInfo) _then) = _$ListInfoCopyWithImpl;
 @useResult
 $Res call({
- String query, dynamic currPage, dynamic totalPages, bool isError, bool isLoadingNextPage
+ String query, int currPage, int totalPages, bool isError, bool isLoadingNextPage
 });
 
 
@@ -63,12 +63,12 @@ class _$ListInfoCopyWithImpl<$Res>
 
 /// Create a copy of ListInfo
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? query = null,Object? currPage = freezed,Object? totalPages = freezed,Object? isError = null,Object? isLoadingNextPage = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? query = null,Object? currPage = null,Object? totalPages = null,Object? isError = null,Object? isLoadingNextPage = null,}) {
   return _then(_self.copyWith(
 query: null == query ? _self.query : query // ignore: cast_nullable_to_non_nullable
-as String,currPage: freezed == currPage ? _self.currPage : currPage // ignore: cast_nullable_to_non_nullable
-as dynamic,totalPages: freezed == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
-as dynamic,isError: null == isError ? _self.isError : isError // ignore: cast_nullable_to_non_nullable
+as String,currPage: null == currPage ? _self.currPage : currPage // ignore: cast_nullable_to_non_nullable
+as int,totalPages: null == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
+as int,isError: null == isError ? _self.isError : isError // ignore: cast_nullable_to_non_nullable
 as bool,isLoadingNextPage: null == isLoadingNextPage ? _self.isLoadingNextPage : isLoadingNextPage // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
@@ -85,8 +85,8 @@ class _ListInfo implements ListInfo {
   
 
 @override@JsonKey() final  String query;
-@override@JsonKey() final  dynamic currPage;
-@override@JsonKey() final  dynamic totalPages;
+@override@JsonKey() final  int currPage;
+@override@JsonKey() final  int totalPages;
 @override@JsonKey() final  bool isError;
 @override@JsonKey() final  bool isLoadingNextPage;
 
@@ -100,12 +100,12 @@ _$ListInfoCopyWith<_ListInfo> get copyWith => __$ListInfoCopyWithImpl<_ListInfo>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ListInfo&&(identical(other.query, query) || other.query == query)&&const DeepCollectionEquality().equals(other.currPage, currPage)&&const DeepCollectionEquality().equals(other.totalPages, totalPages)&&(identical(other.isError, isError) || other.isError == isError)&&(identical(other.isLoadingNextPage, isLoadingNextPage) || other.isLoadingNextPage == isLoadingNextPage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ListInfo&&(identical(other.query, query) || other.query == query)&&(identical(other.currPage, currPage) || other.currPage == currPage)&&(identical(other.totalPages, totalPages) || other.totalPages == totalPages)&&(identical(other.isError, isError) || other.isError == isError)&&(identical(other.isLoadingNextPage, isLoadingNextPage) || other.isLoadingNextPage == isLoadingNextPage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,query,const DeepCollectionEquality().hash(currPage),const DeepCollectionEquality().hash(totalPages),isError,isLoadingNextPage);
+int get hashCode => Object.hash(runtimeType,query,currPage,totalPages,isError,isLoadingNextPage);
 
 @override
 String toString() {
@@ -120,7 +120,7 @@ abstract mixin class _$ListInfoCopyWith<$Res> implements $ListInfoCopyWith<$Res>
   factory _$ListInfoCopyWith(_ListInfo value, $Res Function(_ListInfo) _then) = __$ListInfoCopyWithImpl;
 @override @useResult
 $Res call({
- String query, dynamic currPage, dynamic totalPages, bool isError, bool isLoadingNextPage
+ String query, int currPage, int totalPages, bool isError, bool isLoadingNextPage
 });
 
 
@@ -137,12 +137,12 @@ class __$ListInfoCopyWithImpl<$Res>
 
 /// Create a copy of ListInfo
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? query = null,Object? currPage = freezed,Object? totalPages = freezed,Object? isError = null,Object? isLoadingNextPage = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? query = null,Object? currPage = null,Object? totalPages = null,Object? isError = null,Object? isLoadingNextPage = null,}) {
   return _then(_ListInfo(
 query: null == query ? _self.query : query // ignore: cast_nullable_to_non_nullable
-as String,currPage: freezed == currPage ? _self.currPage : currPage // ignore: cast_nullable_to_non_nullable
-as dynamic,totalPages: freezed == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
-as dynamic,isError: null == isError ? _self.isError : isError // ignore: cast_nullable_to_non_nullable
+as String,currPage: null == currPage ? _self.currPage : currPage // ignore: cast_nullable_to_non_nullable
+as int,totalPages: null == totalPages ? _self.totalPages : totalPages // ignore: cast_nullable_to_non_nullable
+as int,isError: null == isError ? _self.isError : isError // ignore: cast_nullable_to_non_nullable
 as bool,isLoadingNextPage: null == isLoadingNextPage ? _self.isLoadingNextPage : isLoadingNextPage // ignore: cast_nullable_to_non_nullable
 as bool,
   ));

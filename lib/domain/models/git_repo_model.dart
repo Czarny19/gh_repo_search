@@ -4,8 +4,6 @@ part 'git_repo_model.freezed.dart';
 
 @Freezed(fromJson: false, toJson: false)
 abstract class GitRepoSMModel with _$GitRepoSMModel {
-  const GitRepoSMModel._();
-
   const factory GitRepoSMModel({
     required int id,
     required String fullName,

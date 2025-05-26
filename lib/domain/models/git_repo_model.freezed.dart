@@ -83,8 +83,8 @@ as int,
 /// @nodoc
 
 
-class _GitRepoSMModel extends GitRepoSMModel {
-  const _GitRepoSMModel({required this.id, required this.fullName, required this.description, required this.owner, required this.ownerAvatarUrl, required this.updatedAt, required this.language, required this.stars}): super._();
+class _GitRepoSMModel implements GitRepoSMModel {
+  const _GitRepoSMModel({required this.id, required this.fullName, required this.description, required this.owner, required this.ownerAvatarUrl, required this.updatedAt, required this.language, required this.stars});
   
 
 @override final  int id;

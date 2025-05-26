@@ -83,8 +83,8 @@ as String,
 /// @nodoc
 
 
-class _GitRepoIssueModel extends GitRepoIssueModel {
-  const _GitRepoIssueModel({required this.id, required this.number, required this.title, required this.body, required this.user, required this.userAvatarUrl, required this.updatedAt, required this.issueHtmlUrl}): super._();
+class _GitRepoIssueModel implements GitRepoIssueModel {
+  const _GitRepoIssueModel({required this.id, required this.number, required this.title, required this.body, required this.user, required this.userAvatarUrl, required this.updatedAt, required this.issueHtmlUrl});
   
 
 @override final  int id;

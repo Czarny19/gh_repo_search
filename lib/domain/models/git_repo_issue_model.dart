@@ -4,8 +4,6 @@ part 'git_repo_issue_model.freezed.dart';
 
 @Freezed(fromJson: false, toJson: false)
 abstract class GitRepoIssueModel with _$GitRepoIssueModel {
-  const GitRepoIssueModel._();
-
   const factory GitRepoIssueModel({
     required int id,
     required int number,

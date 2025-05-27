@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart' show Cubit;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gh_repo_search/api/repositories/git_repo_repository.dart';
+import 'package:gh_repo_search/domain/repositories/git_repo_repository.dart';
 import 'package:gh_repo_search/domain/models/git_repo_issue_model.dart';
 import 'package:gh_repo_search/domain/models/git_repo_model.dart';
 import 'package:gh_repo_search/domain/usecases/repo/load_git_repo_issues_use_case.dart';

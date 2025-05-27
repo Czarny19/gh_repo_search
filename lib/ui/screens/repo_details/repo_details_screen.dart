@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gh_repo_search/api/repositories/git_repo_repository.dart';
+import 'package:gh_repo_search/domain/repositories/git_repo_repository.dart';
 import 'package:gh_repo_search/domain/models/git_repo_issue_model.dart';
 import 'package:gh_repo_search/extensions/context_extensions.dart';
 import 'package:gh_repo_search/mixins/formatters.dart';

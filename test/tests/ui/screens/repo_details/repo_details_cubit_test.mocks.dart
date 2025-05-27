@@ -5,7 +5,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 
-import 'package:gh_repo_search/api/repositories/git_repo_repository.dart'
+import 'package:gh_repo_search/domain/repositories/git_repo_repository.dart'
     as _i3;
 import 'package:gh_repo_search/domain/models/git_repo_issue_model.dart' as _i6;
 import 'package:gh_repo_search/domain/models/git_repo_model.dart' as _i5;

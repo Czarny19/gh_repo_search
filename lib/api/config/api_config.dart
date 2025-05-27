@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart' show Dio;
 import 'package:gh_repo_search/api/constants/api.dart' as api;
 
-class ApiRepository {
-  ApiRepository() {
+class ApiConfig {
+  ApiConfig() {
     _dio.options.baseUrl = api.baseUrl;
     _dio.options.connectTimeout = Duration(seconds: 5);
     _dio.options.receiveTimeout = Duration(seconds: 3);

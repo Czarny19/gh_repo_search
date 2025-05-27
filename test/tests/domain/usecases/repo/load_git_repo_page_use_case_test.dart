@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart' show Dio, RequestOptions, Response, DioException;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:gh_repo_search/api/constants/api.dart' as api;
-import 'package:gh_repo_search/api/repositories/git_repo_repository.dart';
+import 'package:gh_repo_search/domain/repositories/git_repo_repository.dart';
 import 'package:gh_repo_search/domain/models/git_repo_model.dart';
 import 'package:gh_repo_search/domain/models/list_info.dart';
 import 'package:gh_repo_search/domain/usecases/repo/load_git_repo_page_use_case.dart';

@@ -1,6 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:gh_repo_search/api/repositories/git_repo_repository.dart';
+import 'package:gh_repo_search/domain/repositories/git_repo_repository.dart';
 import 'package:gh_repo_search/domain/models/git_repo_issue_model.dart';
 import 'package:gh_repo_search/domain/models/git_repo_model.dart';
 import 'package:gh_repo_search/ui/screens/repo_details/bloc/repo_details_cubit.dart';
